@@ -83,7 +83,7 @@ export class AppComponent {
 
   get filteredProducts(): Product[] {
     return this.products.filter(product =>
-      product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+      product.name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
     );
   }
 
