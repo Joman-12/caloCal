@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { UpdateService } from './update.service';
 
 interface Product {
   id: string;
@@ -24,6 +25,9 @@ interface SelectedProduct {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  update = inject(UpdateService)
+
   products: Product[] = [
     { id: '1', name: 'Pomme', caloriesPer100g: 52, quantity: null },
     { id: '2', name: 'Banane', caloriesPer100g: 89, quantity: null },
