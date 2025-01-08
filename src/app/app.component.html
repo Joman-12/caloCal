@@ -123,9 +123,10 @@
     </div>
     <div class="w-full grid grid-cols-1 sm:grid-cols-2 p-2 gap-2 ">
         <div *ngFor="let product of selectedProducts; let i = index" class="w-full shadow-blue-200 shadow-xl rounded-lg h-fit p-6 justify-center items-center flex gap-2 text-xl">
-           <span>{{ product.quantity }} g de {{ product.name }}
+           <span> <span class="font-bold">{{ product.quantity }} g </span> de {{ product.name }}
            Pour
-           {{ product.qteCalorie | number : "1.0-0" }} kcal</span>
+           <span class="font-bold">
+           {{ product.qteCalorie | number : "1.0-0" }} kcal </span> </span>
            <button
            (click)="removeProduct(i)"
            class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
