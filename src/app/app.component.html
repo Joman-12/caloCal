@@ -42,7 +42,7 @@
               />
               <button
                 (click)="addProduct(product)"
-                class="mt-3 ml-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                class="mt-3 mb-2 ml-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
               >
                 <svg
                   class="w-6 h-6 text-gray-800 dark:text-white"
@@ -113,6 +113,7 @@
     <h2 *ngIf="selectedProducts.length > 0" class="text-xl font-semibold mb-2">
       Contenu de votre plat
     </h2>
+    <!--Plat vide-->
     <div
       *ngIf="selectedProducts.length === 0"
       class="text-gray-500 w-full text-center"
@@ -120,49 +121,32 @@
       Vous devez sélectionner les produits de votre plat
       <span class="animate-pulse">...</span>
     </div>
-    <table *ngIf="selectedProducts.length > 0" class="w-full border-collapse">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="p-2 text-left">Nom</th>
-          <th class="p-2 text-left">Quantité (g)</th>
-          <th class="p-2 text-left">Calories contenues</th>
-          <th class="p-2 text-left">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr
-          *ngFor="let product of selectedProducts; let i = index"
-          class="border-b"
-        >
-          <td class="p-2">
-            {{ product.name }} {{ product.caloriesPer100g }} kcal
-          </td>
-          <td class="p-2">{{ product.quantity }}g</td>
-          <td class="p-2">{{ product.qteCalorie | number : "1.0-0" }} kcal</td>
-          <td class="p-2">
-            <button
-              (click)="removeProduct(i)"
-              class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-            >
-              <svg
-                class="w-6 h-6 text-gray-800 dark:text-white"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="w-full grid grid-cols-1 sm:grid-cols-2 p-2 gap-2 ">
+        <div *ngFor="let product of selectedProducts; let i = index" class="w-full shadow-blue-200 shadow-xl rounded-lg h-fit p-6 justify-center items-center flex gap-2 text-xl">
+           <span>{{ product.quantity }} g de {{ product.name }}
+           Pour
+           {{ product.qteCalorie | number : "1.0-0" }} kcal</span>
+           <button
+           (click)="removeProduct(i)"
+           class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+         >
+           <svg
+             class="w-6 h-6 text-gray-800 dark:text-white"
+             aria-hidden="true"
+             xmlns="http://www.w3.org/2000/svg"
+             width="24"
+             height="24"
+             fill="currentColor"
+             viewBox="0 0 24 24"
+           >
+             <path
+               fill-rule="evenodd"
+               d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+               clip-rule="evenodd"
+             />
+           </svg>
+         </button>
+          </div>
+        </div>
   </div>
 </div>
